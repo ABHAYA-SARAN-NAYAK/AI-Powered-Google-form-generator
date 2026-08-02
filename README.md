@@ -1,10 +1,7 @@
 <div align="center">
 
-<!-- ANIMATED BANNER -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=AI%20Form%20Generator&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=50" width="100%"/>
 
-
-<!-- BADGES ROW 1 -->
 <p align="center">
   <img src="https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
   <img src="https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
@@ -15,12 +12,11 @@
   <img src="https://img.shields.io/badge/Supabase-Database-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
 </p>
 
-<!-- BADGES ROW 2 -->
 <p align="center">
   <img src="https://img.shields.io/badge/Google%20Forms%20API-v1-4285F4?style=for-the-badge&logo=google&logoColor=white" />
   <img src="https://img.shields.io/badge/Google-OAuth%202.0-DB4437?style=for-the-badge&logo=google&logoColor=white" />
   <img src="https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Made%20with-❤️%20in%20India-FF4081?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4%EF%B8%8F%20in%20India-FF4081?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Hackathon-2026-6366F1?style=for-the-badge" />
 </p>
 
@@ -44,6 +40,7 @@
 | 👑 **Team Leader** | Abhaya Saran Nayak |
 | 👤 **Team Member** | Mandaleeka Sri Chakradhar |
 | 👤 **Team Member** | Pallavi Anand Talawar |
+| 🎓 **College** | A.M. Jain College, Chennai |
 
 </div>
 
@@ -71,13 +68,13 @@ Creating structured Google Forms is **slow, repetitive, and drains productivity*
 
 ## 💡 Solution
 
-**AI Form Generator** eliminates all manual form creation & editing work using AI.
+**AI Form Generator** eliminates all manual form creation and editing work using AI.
 
 ```
 ✅  Type what you need in plain English (or Tamil or Hindi)
 ✅  OR upload a photo of your question paper
 ✅  AI generates every question, type, section, image, and option
-✅  Auto-detects form language & translates additions automatically
+✅  Auto-detects form language and translates additions automatically
 ✅  Edit forms via AI Assistant or manual builder toolbar
 ✅  One click publishes directly as a real Google Form in your Drive
 ```
@@ -91,54 +88,55 @@ The platform plugs directly into **Google Forms API** using your Google account,
 ### 🤖 AI Form Generation
 Describe your form in natural language. The AI understands context, selects appropriate question types (MCQ, short answer, rating scale, dropdown), structures sections logically, and creates a complete Google Form in your Google Drive.
 
-### 🔄 Production-Grade AI Key Rotation & Model Fallback
+### 🔄 Production-Grade AI Key Rotation and Model Fallback
 The backend features a robust Gemini API key rotation system with automatic multi-model fallback:
-- **Multi-Key Support**: Configure up to 3 Gemini API keys (`GEMINI_API_KEY`, `GEMINI_API_KEY_2`, `GEMINI_API_KEY_3`). Empty keys are automatically filtered out.
+- **Multi-Key Support**: Configure up to 3 Gemini API keys. Empty keys are automatically filtered out.
 - **Multi-Model Fallback**: Automatically tries `gemini-2.0-flash` → `gemini-1.5-flash` → `gemini-1.5-pro` for each key.
 - **Smart Retry Logic**: On 429 (rate limit), 404 (model not found), or 403 (forbidden) errors, the system silently moves to the next key/model combination.
-- **Timeout & Network Resilience**: Handles request timeouts and network failures gracefully, continuing to the next combination.
-- **Zero Downtime**: All key×model combinations are exhausted before returning a user-friendly 503 error.
+- **Zero Downtime**: All key and model combinations are exhausted before returning a user-friendly error.
 
 ### 📸 MCQ Image OCR Extraction
 Photograph any printed question paper or screenshot an existing document. The AI extracts every question, reads answer choices, and converts them into editable form inputs — ready to be pushed to Google Forms.
 
-### 💳 Payment QR Code & Banner Uploads
-Automatically detects payment/canteen/fee prompts and provides a required QR code upload section. Uploaded QR images are saved to your Google Drive and embedded directly as the first item (`index: 0`) in the Google Form.
+### 💳 Payment QR Code and Banner Uploads
+Automatically detects payment/canteen/fee prompts and provides a required QR code upload section. Uploaded QR images are saved to your Google Drive and embedded directly as the first item in the Google Form.
 
 ### 🛠️ Manual Form Builder Toolbar
 A powerful sticky toolbar on the Edit Form page allowing you to add 5 distinct element types:
 - **+ Question**: Short Answer, Paragraph, MCQ, Checkboxes, Dropdown, Linear Scale, Date, Time
-- **+ Section**: Page break headers with title & description
+- **+ Section**: Page break headers with title and description
 - **+ QR Code**: Embedded payment QR code image
 - **+ Banner Image**: Form banner image with custom titles
-- **+ Description**: Text blocks (`textItem`)
+- **+ Description**: Text blocks
+
 Supports full reordering (move up/down) and delete actions.
 
 ### ✨ AI Edit Assistant
 Modify existing forms naturally using plain English instructions. Features a real-time diff preview showing:
-- `✅ Added`: New questions/sections
-- `✏️ Modified`: Title, type, required status, or option updates
-- `❌ Removed`: Items removed from the form
-Review changes with **Confirm & Save** or **Discard** options.
+- `✅ Added` — New questions/sections
+- `✏️ Modified` — Title, type, required status, or option updates
+- `❌ Removed` — Items removed from the form
 
-### 🌐 Auto Language Detection & Translation
-- **On-Load Detection**: Automatically scans existing form items to detect the primary language (Hindi, Tamil, French, Spanish, Arabic, German, etc.).
+Review changes with **Confirm and Save** or **Discard** options.
+
+### 🌐 Auto Language Detection and Translation
+- **On-Load Detection**: Automatically scans existing form items to detect the primary language.
 - **Form Language Badge**: Interactive badge with a target language override dropdown.
 - **AI Language Alignment**: Ensures AI edits match the target language.
-- **Translation Preview Modal**: When saving a non-English form, new/edited items are translated on-the-fly with an interactive preview modal where you can edit translations or confirm save.
+- **Translation Preview Modal**: When saving a non-English form, new/edited items are translated on-the-fly.
 
 ### 🔮 AI-Powered Adaptive Form Optimization Engine
-Automated AI UX expert that analyzes forms after generation or on-demand from the Edit Form page:
-- **Comprehensive UX Analysis**: Evaluates Question Clarity, Cognitive Load & length, Logical Flow, Audience Suitability, and Completion Likelihood.
-- **Form Quality Score**: Circular animated progress meter (0–100) color-coded for instant feedback (Emerald >80, Amber 60–80, Rose <60).
-- **Severity-Badged Issues Report**: Categorized list of detected UX flaws with severity badges (🔴 High / 🟡 Medium / 🟢 Low) and actionable AI fix suggestions.
-- **Interactive Diff Preview**: Structural diff (Added, Modified, Removed items) comparing original vs optimized version.
-- **Single-Click Application**: Review optimizations and apply them to your Google Form with a single click.
+Automated AI UX expert that analyzes forms after generation or on-demand:
+- **Comprehensive UX Analysis**: Evaluates Question Clarity, Cognitive Load, Logical Flow, Audience Suitability, and Completion Likelihood.
+- **Form Quality Score**: Circular animated progress meter (0–100) color-coded for instant feedback.
+- **Severity-Badged Issues Report**: Categorized list of detected UX flaws with severity badges (🔴 High / 🟡 Medium / 🟢 Low).
+- **Interactive Diff Preview**: Structural diff comparing original vs optimized version.
+- **Single-Click Application**: Review optimizations and apply them with a single click.
 
-### 🛡️ Smart File Upload Handling & Sanitization
-Google Forms API does not support native `FILE_UPLOAD` questions for most accounts. Shared backend helpers (`formHelpers.js`) automatically detect and convert any file/image/document upload question request into a clean `short_text` question requesting Google Drive / Photos shareable links with clear instructions.
+### 🛡️ Smart File Upload Handling and Sanitization
+Google Forms API does not support native FILE_UPLOAD questions for most accounts. Backend helpers automatically detect and convert any file/image/document upload question into a clean short text question.
 
-### 📊 Interactive Dashboard & Library
+### 📊 Interactive Dashboard and Library
 Real-time stats overview with glassmorphic cards. Full form management with Table/Grid views, advanced filters (Type, Audience, Language, Date Range), bulk archiving, CSV exports, and direct Google Form links.
 
 ### 🔐 Google OAuth Login
@@ -154,27 +152,27 @@ Secure Google sign-in with OAuth 2.0 and JWT session cookies. No passwords store
 
 | Technology | Version | Purpose |
 |-----------|---------|---------|
-| ![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=black&style=flat-square) | 18.x | UI Framework |
-| ![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?logo=vite&logoColor=white&style=flat-square) | 5.x | Build Tool & Dev Server |
-| ![TailwindCSS](https://img.shields.io/badge/Tailwind-3.x-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square) | 3.x | Utility-First CSS |
-| ![React Router](https://img.shields.io/badge/React%20Router-v6-CA4245?logo=reactrouter&logoColor=white&style=flat-square) | v6 | Client-Side Routing |
-| ![Lucide](https://img.shields.io/badge/Lucide%20Icons-latest-F97316?style=flat-square) | latest | Icon Library |
-| ![Axios](https://img.shields.io/badge/Axios-1.x-5A29E4?style=flat-square) | 1.x | HTTP Client |
-| ![Recharts](https://img.shields.io/badge/Recharts-2.x-22C55E?style=flat-square) | 2.x | Charts & Graphs |
-| ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-10.x-E91E63?style=flat-square) | 10.x | Animations |
+| React | 18.x | UI Framework |
+| Vite | 5.x | Build Tool and Dev Server |
+| TailwindCSS | 3.x | Utility-First CSS |
+| React Router | v6 | Client-Side Routing |
+| Lucide Icons | latest | Icon Library |
+| Axios | 1.x | HTTP Client |
+| Recharts | 2.x | Charts and Graphs |
+| Framer Motion | 10.x | Animations |
 
 ### Backend
 
 | Technology | Version | Purpose |
 |-----------|---------|---------|
-| ![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?logo=nodedotjs&logoColor=white&style=flat-square) | 20.x | Server Runtime |
-| ![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white&style=flat-square) | 4.x | REST API Framework |
-| ![Supabase](https://img.shields.io/badge/Supabase-2.x-3ECF8E?logo=supabase&logoColor=white&style=flat-square) | 2.x | PostgreSQL Database |
-| ![Gemini AI](https://img.shields.io/badge/Gemini-Multi--Model-8E75B2?logo=google&logoColor=white&style=flat-square) | 2.0-flash / 1.5-flash / 1.5-pro | AI Generation & Translation (auto-fallback) |
-| ![Google APIs](https://img.shields.io/badge/Google%20APIs-144.x-4285F4?logo=google&logoColor=white&style=flat-square) | 144.x | Forms & Drive API |
-| ![Multer](https://img.shields.io/badge/Multer-1.x-EE5A24?style=flat-square) | 1.x | Multipart Uploads |
-| ![JWT](https://img.shields.io/badge/JWT-9.x-000000?logo=jsonwebtokens&logoColor=white&style=flat-square) | 9.x | Session Tokens |
-| ![Zod](https://img.shields.io/badge/Zod-3.x-3E67B1?style=flat-square) | 3.x | Schema Validation |
+| Node.js | 20.x | Server Runtime |
+| Express | 4.x | REST API Framework |
+| Supabase | 2.x | PostgreSQL Database |
+| Gemini AI | 2.0-flash / 1.5-flash / 1.5-pro | AI Generation and Translation (auto-fallback) |
+| Google APIs | 144.x | Forms and Drive API |
+| Multer | 1.x | Multipart Uploads |
+| JWT | 9.x | Session Tokens |
+| Zod | 3.x | Schema Validation |
 
 </div>
 
@@ -183,54 +181,45 @@ Secure Google sign-in with OAuth 2.0 and JWT session cookies. No passwords store
 ## 🏗️ System Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                               USER BROWSER                                    │
-│                                                                                │
-│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   ┌───────────┐ │
-│   │   Login      │    │  Dashboard   │    │ Create Form  │   │ Edit Form │ │
-│   │   Page       │    │    Page      │    │  (QR Upload) │   │ (AI Assistant│
-│   └──────┬───────┘    └──────┬───────┘    └──────┬───────┘   └─────┬─────┘ │
-│          │                   │                   │                 │         │
-│          └───────────────────┼───────────────────┼─────────────────┘         │
-│                              │                   │                            │
-│                    ┌─────────▼───────────────────▼──────────┐                │
-│                    │         React Router v6                │                │
-│                    │       + AuthContext (JWT)               │                │
-│                    └─────────────────┬──────────────────────┘                │
-│                                      │                                        │
-│                            ┌─────────▼──────────┐                            │
-│                            │   Axios + Vite      │                            │
-│                            │   Proxy (/api →)    │                            │
-│                            └─────────┬──────────┘                            │
-└──────────────────────────────────────┼───────────────────────────────────────┘
-                                       │ HTTP Multipart/JSON (port 4028 → 3000)
-┌──────────────────────────────────────┼───────────────────────────────────────┐
-│                          EXPRESS BACKEND (port 3000)                           │
-│                                      │                                        │
-│    ┌─────────────┐    ┌──────────────▼──────────────┐    ┌────────────────┐ │
-│    │  Helmet      │    │       Route Handlers        │    │  Cookie Parser │ │
-│    │  CORS        │───▶│                             │◀──│  Rate Limiter  │ │
-│    │  Security    │    │  /auth/google               │    │  Session JWT   │ │
-│    └─────────────┘    │  /generate-form (Multipart)  │    └────────────────┘ │
-│                        │  /forms/:id     (PUT/GET)   │                       │
-│                        │  /forms/:id/ai-edit (AI)    │                       │
-│                        │  /translate     (Gemini)    │                       │
-│                        │  /detect-language (Gemini)  │                       │
-│                        └───────┬─────────┬───────────┘                       │
-│                                │         │                                   │
-│               ┌────────────────▼──┐  ┌───▼────────────────┐                  │
-│               │ Gemini AI Service │  │ Google Forms/Drive │                  │
-│               │ Key Rotation +    │  │ API (batchUpdate)  │                  │
-│               │ Model Fallback    │  │                    │                  │
-│               │ (2.0/1.5-flash/   │  │                    │                  │
-│               │  1.5-pro)         │  │                    │                  │
-│               └───────────────────┘  └───────┬────────────┘                  │
-│                                              │                                │
-│                                    ┌─────────▼──────────┐                    │
-│                                    │     Supabase       │                    │
-│                                    │  (PostgreSQL DB)   │                    │
-│                                    └────────────────────┘                    │
-└───────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                         USER BROWSER                            │
+│                                                                  │
+│   ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────┐  │
+│   │   Login   │  │ Dashboard │  │   Create  │  │   Edit    │  │
+│   │   Page    │  │   Page    │  │   Form    │  │   Form    │  │
+│   └─────┬─────┘  └─────┬─────┘  └─────┬─────┘  └─────┬─────┘  │
+│         └──────────────┼──────────────┼───────────────┘        │
+│                        │              │                         │
+│              ┌─────────▼──────────────▼──────────┐             │
+│              │      React Router v6 + AuthContext  │             │
+│              └──────────────────┬─────────────────┘             │
+│                                 │                               │
+│                      ┌──────────▼──────────┐                   │
+│                      │  Axios + Vite Proxy  │                   │
+│                      └──────────┬──────────┘                   │
+└─────────────────────────────────┼───────────────────────────────┘
+                                  │ HTTP (port 4028 to 3000)
+┌─────────────────────────────────┼───────────────────────────────┐
+│              EXPRESS BACKEND (port 3000)                         │
+│                                 │                               │
+│         ┌───────────────────────▼─────────────────────┐        │
+│         │              Route Handlers                  │        │
+│         │  /auth/google    /generate-form              │        │
+│         │  /forms/:id      /forms/:id/ai-edit          │        │
+│         │  /translate      /detect-language            │        │
+│         └──────────┬──────────────────┬───────────────┘        │
+│                    │                  │                         │
+│         ┌──────────▼──────┐  ┌────────▼────────────┐           │
+│         │  Gemini AI      │  │  Google Forms/Drive  │           │
+│         │  Key Rotation   │  │  API (batchUpdate)   │           │
+│         │  Model Fallback │  │                      │           │
+│         └─────────────────┘  └──────────┬───────────┘           │
+│                                         │                       │
+│                              ┌──────────▼──────────┐            │
+│                              │      Supabase        │            │
+│                              │   (PostgreSQL DB)    │            │
+│                              └─────────────────────┘            │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -238,64 +227,61 @@ Secure Google sign-in with OAuth 2.0 and JWT session cookies. No passwords store
 ## 📁 Project Structure
 
 ```
-stathama/
-├── FRONTEND/                      # React Frontend (Vite)
-│   ├── public/                    # Static assets
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ui/
-│   │   │   │   ├── Button.jsx     # Reusable button component
-│   │   │   │   ├── Header.jsx     # Global navigation header
-│   │   │   │   ├── Input.jsx      # Styled input component
-│   │   │   │   ├── Select.jsx     # Custom select dropdown
-│   │   │   │   └── Checkbox.jsx   # Styled checkbox
-│   │   │   ├── AppIcon.jsx        # Lucide icon wrapper
-│   │   │   └── RequireAuth.jsx    # Auth route guard
-│   │   ├── context/
-│   │   │   └── AuthContext.jsx    # Authentication context
-│   │   ├── pages/
-│   │   │   ├── login/             # Google OAuth login page
-│   │   │   ├── dashboard/         # Main dashboard & metrics
-│   │   │   ├── create-form/       # Form creation & QR upload wizard
-│   │   │   ├── my-forms/          # Forms library & management
-│   │   │   ├── edit-form/         # Form editor, AI Assistant, Language Toolbar
-│   │   │   └── profile/           # User profile & settings
-│   │   ├── services/
-│   │   │   ├── authApi.js         # OAuth login, logout, getMe
-│   │   │   ├── formGeneratorApi.js # Axios instance & multipart API calls
-│   │   │   └── formsApi.js        # Form CRUD, AI Edit, Translation API
-│   │   └── App.jsx
-│   ├── vite.config.mjs            # Vite config with /api proxy
-│   └── package.json
+ai-powered-google-form-generator/
 │
-├── backend/                       # Node.js Backend (Express)
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── env.js             # Zod-validated environment variables
-│   │   ├── controllers/
-│   │   │   ├── generateFormController.js   # AI form & Drive QR generation
-│   │   │   ├── formsController.js          # Forms CRUD
-│   │   │   └── analyticsController.js      # Form metrics & response stats
-│   │   ├── middlewares/
-│   │   │   ├── requireUser.js     # JWT session authentication
-│   │   │   ├── rateLimit.js       # Rate limiting middleware
-│   │   │   └── validate.js        # Zod schema validator
-│   │   ├── routes/
-│   │   │   ├── authRoute.js       # OAuth + session endpoints
-│   │   │   ├── generateFormRoute.js # Multipart POST /generate-form
-│   │   │   └── formsRoute.js      # Forms CRUD, AI Edit, Translate routes
-│   │   ├── services/
-│   │   │   ├── geminiService.js         # Gemini AI with key rotation & model fallback
-│   │   │   ├── googleOAuthService.js    # Google OAuth2 client & token refresh
-│   │   │   ├── googleFormsService.js    # Google Forms API batchUpdate
-│   │   │   ├── userFormsService.js      # Form sync, Drive upload & item builder
-│   │   │   └── supabaseClient.js        # Supabase client init
-│   │   ├── app.js                 # Express app setup
-│   │   └── server.js              # Server entry point
-│   ├── Dockerfile
-│   └── package.json
+├── FRONTEND/
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       │   ├── ui/
+│       │   │   ├── Button.jsx
+│       │   │   ├── Header.jsx
+│       │   │   ├── Input.jsx
+│       │   │   ├── Select.jsx
+│       │   │   └── Checkbox.jsx
+│       │   ├── AppIcon.jsx
+│       │   └── RequireAuth.jsx
+│       ├── context/
+│       │   └── AuthContext.jsx
+│       ├── pages/
+│       │   ├── login/
+│       │   ├── dashboard/
+│       │   ├── create-form/
+│       │   ├── my-forms/
+│       │   ├── edit-form/
+│       │   └── profile/
+│       ├── services/
+│       │   ├── authApi.js
+│       │   ├── formGeneratorApi.js
+│       │   └── formsApi.js
+│       └── App.jsx
 │
-└── README.md                      # This file
+├── backend/
+│   └── src/
+│       ├── config/
+│       │   └── env.js
+│       ├── controllers/
+│       │   ├── generateFormController.js
+│       │   ├── formsController.js
+│       │   └── analyticsController.js
+│       ├── middlewares/
+│       │   ├── requireUser.js
+│       │   ├── rateLimit.js
+│       │   └── validate.js
+│       ├── routes/
+│       │   ├── authRoute.js
+│       │   ├── generateFormRoute.js
+│       │   └── formsRoute.js
+│       ├── services/
+│       │   ├── geminiService.js
+│       │   ├── googleOAuthService.js
+│       │   ├── googleFormsService.js
+│       │   ├── userFormsService.js
+│       │   └── supabaseClient.js
+│       ├── app.js
+│       └── server.js
+│
+└── README.md
 ```
 
 ---
@@ -304,139 +290,121 @@ stathama/
 
 ### Prerequisites
 
-- **Node.js** ≥ 20.x ([Download](https://nodejs.org/))
-- **npm** ≥ 9.x (comes with Node.js)
-- A **Google Cloud** project with OAuth 2.0 credentials
-- A **Supabase** project
-- A **Google Gemini** API key
+- Node.js >= 20.x
+- npm >= 9.x
+- A Google Cloud project with OAuth 2.0 credentials
+- A Supabase project
+- A Google Gemini API key
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ai-form-generator.git
-cd ai-form-generator
+git clone https://github.com/ABHAYA-SARAN-NAYAK/ai-powered-google-form-generator.git
+cd ai-powered-google-form-generator
 ```
 
 ### 2. Setup Backend
 
 ```bash
 cd backend
-
-# Install dependencies
 npm install
-
-# Create environment file
 cp .env.example src/.env
 ```
 
 Edit `src/.env` with your credentials:
 
 ```env
-# ── Server ──
 PORT=3000
 NODE_ENV=development
-
-# ── Frontend ──
 FRONTEND_APP_URL=http://localhost:4028
 
-# ── Google OAuth 2.0 ──
 GOOGLE_OAUTH_CLIENT_ID=your-client-id.apps.googleusercontent.com
 GOOGLE_OAUTH_CLIENT_SECRET=GOCSPX-xxxxxxxxxxxxxxxxxxxx
 GOOGLE_OAUTH_REDIRECT_URI=http://localhost:3000/auth/google/callback
 
-# ── Google Gemini AI (Key Rotation — up to 3 keys) ──
 GEMINI_API_KEY=your-primary-gemini-api-key
-GEMINI_API_KEY_2=                              # Optional: second key for rotation
-GEMINI_API_KEY_3=                              # Optional: third key for rotation
+GEMINI_API_KEY_2=your-second-gemini-api-key
+GEMINI_API_KEY_3=your-third-gemini-api-key
 
-# ── Session & Encryption ──
 SESSION_JWT_SECRET=your-random-string-min-32-characters-long
 TOKENS_ENCRYPTION_KEY_BASE64=base64-encoded-32-byte-key
 
-# ── Supabase ──
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
 ```
 
-Start the backend:
-
 ```bash
 npm run dev
 ```
 
-The backend will start on **http://localhost:3000**.
+Backend starts on **http://localhost:3000**
 
 ### 3. Setup Frontend
 
-Open a **new terminal**:
-
 ```bash
 cd FRONTEND
-
-# Install dependencies
 npm install
-
-# Start the dev server
 npm run dev
 ```
 
-The frontend will start on **http://localhost:4028**.
+Frontend starts on **http://localhost:4028**
 
 ### 4. Configure Google Cloud Console
 
-In your [Google Cloud Console](https://console.cloud.google.com/apis/credentials):
-
-1. Go to **APIs & Services → Credentials**
-2. Click your **OAuth 2.0 Client ID**
-3. Add **Authorized JavaScript origins**:
-   ```
-   http://localhost:3000
-   ```
-4. Add **Authorized redirect URIs**:
-   ```
-   http://localhost:3000/auth/google/callback
-   ```
-5. Enable these APIs:
-   - Google Forms API
-   - Google Drive API
-   - Google People API
+1. Go to **APIs and Services → Credentials**
+2. Add **Authorized JavaScript origins**: `http://localhost:3000`
+3. Add **Authorized redirect URIs**: `http://localhost:3000/auth/google/callback`
+4. Enable: Google Forms API, Google Drive API, Google People API
 
 ### 5. Open the App
 
-Visit **http://localhost:4028** → Click **"Continue with Google"** → Start generating forms! 🎉
+Visit **http://localhost:4028** → Click **Continue with Google** → Start generating forms!
 
 ---
 
-## 📡 API Endpoints Reference
+## 📡 API Endpoints
 
 ### Authentication
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/auth/google` | Start Google OAuth login flow |
-| `GET` | `/auth/google/callback` | OAuth callback (sets session cookie) |
+| `GET` | `/auth/google/callback` | OAuth callback handler |
 | `GET` | `/me` | Get current authenticated user |
 | `POST` | `/logout` | Clear session cookie |
 
-### Form Generation & OCR
+### Form Generation and OCR
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/generate-form` | Multipart endpoint: Generate form + upload payment QR |
-| `POST` | `/extract-from-images` | Extract questions from uploaded OCR images |
+| `POST` | `/generate-form` | Generate form from AI prompt |
+| `POST` | `/extract-from-images` | Extract questions from OCR images |
 
-### Forms Management & AI Editing
+### Forms Management and AI Editing
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/forms` | List user's forms |
 | `GET` | `/forms/:id` | Get specific form details |
-| `PUT` | `/forms/:id` | Update form (multipart support for images) |
+| `PUT` | `/forms/:id` | Update form |
 | `DELETE` | `/forms/:id` | Delete a form |
-| `POST` | `/forms/:id/ai-edit` | AI Edit Assistant — modify form using natural language |
-| `POST` | `/forms/:id/optimize` | AI Optimization Engine — analyze form UX score, issues & optimize structure |
-| `POST` | `/translate` | Translate array of form texts into target language |
-| `POST` | `/detect-language` | Detect form's primary language from text samples |
+| `POST` | `/forms/:id/ai-edit` | AI Edit Assistant |
+| `POST` | `/forms/:id/optimize` | AI Optimization Engine |
+| `POST` | `/translate` | Translate form texts |
+| `POST` | `/detect-language` | Detect form language |
+
+---
+
+## 🔐 Security Measures
+
+| Measure | Implementation |
+|---------|---------------|
+| Authentication | Google OAuth 2.0 — no passwords stored |
+| Authorization | JWT tokens in HttpOnly cookies |
+| API Keys | Server-side only — never exposed to frontend |
+| Input Validation | Zod schema validation on all inputs |
+| CORS | Restricted to whitelisted frontend origin |
+| Rate Limiting | Express rate-limiter on all AI endpoints |
 
 ---
 
@@ -450,9 +418,7 @@ npm run build
 npm start
 ```
 
-Builds the React frontend into `FRONTEND/build/` and serves it directly from Express on port 3000.
-
-### Docker Build
+### Docker
 
 ```bash
 cd backend
@@ -462,20 +428,26 @@ docker run -p 3000:3000 --env-file src/.env ai-form-generator
 
 ---
 
+## 🔭 Future Scope
+
+- Response Analytics Dashboard — charts per form
+- Fake Response Detection — AI trust score per respondent
+- Form Autopsy — diagnose why a form has low completion rate
+- Team Collaboration — shared form workspaces
+- Webhook triggers on form response events
+
+---
+
 ## 📜 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](backend/LICENSE) file for details.
+This project is licensed under the **MIT License**.
 
 ---
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=gradient&amp;customColorList=6,11,20&amp;height=100&amp;section=footer" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%"/>
 
-
-**Built with ❤️ by Team TrioBits**
+**Built with ❤️ by Team TrioBits — A.M. Jain College, Chennai**
 
 </div>
-
-#   a i - p o w e r e d - g o o g l e - f o r m - g e n e r a t o r  
- 
