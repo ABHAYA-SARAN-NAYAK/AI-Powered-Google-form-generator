@@ -6,8 +6,6 @@ import { sanitizeFileUploadQuestion, sanitizeAllFileUploads } from '../utils/for
 
 const GEMINI_KEYS = [
   env.GEMINI_API_KEY,
-  env.GEMINI_API_KEY_2,
-  env.GEMINI_API_KEY_3,
 ].filter(Boolean);
 
 const GEMINI_MODELS = [
