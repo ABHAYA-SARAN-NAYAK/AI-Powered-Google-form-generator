@@ -40,7 +40,6 @@
 | 👑 **Team Leader** | Abhaya Saran Nayak |
 | 👤 **Team Member** | Mandaleeka Sri Chakradhar |
 | 👤 **Team Member** | Pallavi Anand Talawar |
-| 🎓 **College** | A.M. Jain College, Chennai |
 
 </div>
 
@@ -448,6 +447,6 @@ This project is licensed under the **MIT License**.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%"/>
 
-**Built with ❤️ by Team TrioBits — A.M. Jain College, Chennai**
+**Built with ❤️ by Team TrioBits**
 
 </div>
