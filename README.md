@@ -22,7 +22,8 @@
 
 <br/>
 
-<img width="1774" height="887" alt="AI Form Generator Dashboard" src="https://github.com/user-attachments/assets/dfd09fe9-ba87-4564-8e93-bb723dd2f7e2" />
+<img width="1918" height="902" alt="Screenshot 2026-08-01 121348" src="https://github.com/user-attachments/assets/3a877779-9f4e-4dd8-88d5-0828cafed6ae" />
+
 
 <br/><br/>
 
