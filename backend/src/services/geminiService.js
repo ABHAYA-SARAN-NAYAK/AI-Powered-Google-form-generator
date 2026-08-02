@@ -23,50 +23,67 @@ async function requestGemini({ body, failureLabel }) {
   for (const key of GEMINI_KEYS) {
     for (const model of GEMINI_MODELS) {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 25_000);
 
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-          signal: controller.signal,
-        });
+      let attempts = 0;
+      const maxRetries = 3;
 
-        clearTimeout(timeout);
+      while (attempts <= maxRetries) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 25_000);
 
-        if (response.ok) {
-          return response.json();
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+            signal: controller.signal,
+          });
+
+          clearTimeout(timeout);
+
+          if (response.ok) {
+            return response.json();
+          }
+
+          const errorText = await response.text();
+          let errorJson;
+          try { errorJson = JSON.parse(errorText); } catch { errorJson = null; }
+          const errorCode = errorJson?.error?.code || response.status;
+
+          if (errorCode === 429) {
+            attempts++;
+            if (attempts <= maxRetries) {
+              console.log('Rate limited - waiting 60 seconds before retry...');
+              await new Promise((resolve) => setTimeout(resolve, 60_000));
+              continue;
+            }
+            triedCombinations.push({ key: key.slice(-6), model, code: 429 });
+            break;
+          }
+
+          if (errorCode === 404 || errorCode === 403) {
+            triedCombinations.push({ key: key.slice(-6), model, code: errorCode });
+            break;
+          }
+
+          const err = new Error(`${failureLabel}: ${errorText}`);
+          err.statusCode = response.status || 502;
+          err.code = 'GEMINI_API_ERROR';
+          throw err;
+
+        } catch (cause) {
+          clearTimeout(timeout);
+
+          if (cause?.code === 'GEMINI_API_ERROR') throw cause;
+
+          if (cause?.name === 'AbortError') {
+            triedCombinations.push({ key: key.slice(-6), model, code: 'TIMEOUT' });
+            break;
+          }
+
+          triedCombinations.push({ key: key.slice(-6), model, code: 'NETWORK' });
+          break;
         }
-
-        const errorText = await response.text();
-        let errorJson;
-        try { errorJson = JSON.parse(errorText); } catch { errorJson = null; }
-        const errorCode = errorJson?.error?.code;
-
-        if (errorCode === 429 || errorCode === 404 || errorCode === 403) {
-          triedCombinations.push({ key: key.slice(-6), model, code: errorCode });
-          continue;
-        }
-
-        const err = new Error(`${failureLabel}: ${errorText}`);
-        err.statusCode = response.status || 502;
-        err.code = 'GEMINI_API_ERROR';
-        throw err;
-
-      } catch (cause) {
-        clearTimeout(timeout);
-
-        if (cause?.code === 'GEMINI_API_ERROR') throw cause;
-
-        if (cause?.name === 'AbortError') {
-          triedCombinations.push({ key: key.slice(-6), model, code: 'TIMEOUT' });
-          continue;
-        }
-
-        triedCombinations.push({ key: key.slice(-6), model, code: 'NETWORK' });
-        continue;
       }
     }
   }
