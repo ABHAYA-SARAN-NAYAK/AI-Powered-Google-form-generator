@@ -1,0 +1,69 @@
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { getMe, logout as logoutApi } from '../services/authApi';
+
+const AuthContext = createContext(null);
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const data = await getMe();
+        if (!cancelled) {
+          setUser(data?.user || null);
+
+          // Show welcome toast when user is logged in
+          if (data?.user) {
+            try {
+              if (typeof window !== 'undefined' && window.dispatchEvent) {
+                window.dispatchEvent(
+                  new CustomEvent('app_welcome', { detail: { name: data.user.name } })
+                );
+              }
+            } catch {
+              // ignore
+            }
+          }
+        }
+      } catch {
+        if (!cancelled) setUser(null);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      user,
+      isLoading,
+      isAuthenticated: !!user,
+      setUser,
+      logout: async () => {
+        try {
+          await logoutApi();
+        } catch {
+          // ignore network errors on logout
+        }
+        setUser(null);
+      }
+    }),
+    [user, isLoading]
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth() {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  return ctx;
+}

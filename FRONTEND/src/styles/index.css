@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  line-height: normal;
+  font-family: inherit;
+  margin: unset;
+}
+
+/* =========================================================
+   LIGHT MODE OVERRIDES (.light selector on <html>)
+   In dark mode (no .light class), existing styles remain untouched.
+========================================================= */
+
+.light {
+  --color-background: #F8FAFC;
+  --color-foreground: #0F172A;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0F172A;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0F172A;
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
+  --color-border: #E2E8F0;
+  --color-input: #CBD5E1;
+  color-scheme: light;
+}
+
+/* Page background */
+.light body,
+.light #root,
+.light .min-h-screen {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+/* Section & Page container backgrounds */
+.light .bg-\[\#0A0F1E\],
+.light .bg-\[\#050811\],
+.light .bg-\[\#0F172A\],
+.light .bg-\[\#0f172a\] {
+  background-color: #F8FAFC !important;
+}
+
+/* Card / Surface backgrounds */
+.light .bg-\[\#111827\],
+.light .bg-\[\#1A2235\],
+.light .bg-\[\#1E293B\],
+.light .bg-\[\#111827\]\/80,
+.light .bg-\[\#111827\]\/50,
+.light .bg-\[\#111827\]\/60,
+.light .bg-\[\#0A0F1E\]\/95,
+.light .bg-slate-900\/60,
+.light .bg-slate-900\/40,
+.light .bg-slate-900\/30 {
+  background-color: #FFFFFF !important;
+}
+
+/* Borders */
+.light .border-\[\#1F2937\],
+.light .border-\[\#1E293B\],
+.light .border-slate-800,
+.light .border-slate-700,
+.light .border-gray-800 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Navigation bar */
+.light header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+.light header img {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+.light nav.fixed {
+  background-color: #FFFFFF !important;
+  border-top-color: #E2E8F0 !important;
+}
+
+/* Primary text */
+.light .text-white,
+.light .text-gray-100,
+.light .text-gray-200 {
+  color: #0F172A !important;
+}
+
+/* Secondary & Muted text */
+.light .text-gray-300,
+.light .text-gray-400,
+.light .text-gray-500 {
+  color: #64748B !important;
+}
+
+/* Badge / Pill background & text */
+.light .bg-indigo-600\/15,
+.light .bg-indigo-600\/20,
+.light .bg-indigo-500\/10,
+.light .bg-indigo-500\/20,
+.light .bg-emerald-600\/15 {
+  background-color: #EEF2FF !important;
+}
+.light .text-indigo-300,
+.light .text-indigo-400 {
+  color: #6366F1 !important;
+}
+
+/* Stat card icon background */
+.light .w-10.h-10.bg-indigo-600\/15,
+.light .w-12.h-12.bg-indigo-600\/15,
+.light .w-8.h-8.bg-indigo-600\/15,
+.light .w-14.h-14.bg-indigo-600\/15 {
+  background-color: #EEF2FF !important;
+}
+
+/* Input, Textarea & Select controls */
+.light input:not([type="checkbox"]),
+.light textarea,
+.light select {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Table header & row hover */
+.light th {
+  color: #64748B !important;
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+.light tr:hover,
+.light tbody tr:hover {
+  background-color: #F8FAFC !important;
+}
+
+/* Header profile button & theme toggle button in light mode */
+.light .theme-toggle-btn,
+.light header button.bg-\[\#111827\] {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #475569 !important;
+}
+.light .theme-toggle-btn:hover,
+.light header button.bg-\[\#111827\]:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* Keep primary buttons indigo with white text */
+.light .bg-primary,
+.light .bg-indigo-600,
+.light .bg-gradient-to-r {
+  color: #FFFFFF !important;
+}
