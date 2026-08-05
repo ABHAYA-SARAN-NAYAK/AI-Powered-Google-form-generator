@@ -22,16 +22,14 @@ export function createApp() {
     next();
   });
 
-  // Dev only: Vite runs on a different origin, so allow cross-origin cookies.
-  // Production on Render is single-origin (backend serves the built frontend), so CORS is unnecessary.
-  if (env.NODE_ENV !== 'production') {
-    app.use(
-      cors({
-        origin: env.FRONTEND_APP_URL,
-        credentials: true
-      })
-    );
-  }
+  // Frontend and backend may live on different origins (e.g. separate Render services),
+  // so allow cross-origin credentialed requests from the configured frontend origin.
+  app.use(
+    cors({
+      origin: env.FRONTEND_APP_URL,
+      credentials: true
+    })
+  );
 
   app.use(helmet());
   app.use(express.json({ limit: '1mb' }));
